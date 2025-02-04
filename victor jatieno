@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We are Lavaas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>We are Lavaas</h1>
+        <form id="nameForm">
+            <label for="partnerName">NAME OF YOUR PARTNER:</label>
+            <input type="text" id="partnerName" name="partnerName" required>
+            <button type="submit">Enter</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('nameForm');
+        const messageDiv = document.getElementById('message');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const partnerName = document.getElementById('partnerName').value;
+            showMessage(partnerName);
+        });
+
+        function showMessage(name) {
+            form.style.display = 'none';
+            messageDiv.innerHTML = `
+                <p>${name},</p>
+                <p>WILL YOU BE MY VALENTINE?</p>
+                <button onclick="handleResponse('yes')">Yes</button>
+                <button onclick="handleResponse('no')">No</button>
+            `;
+        }
+
+        function handleResponse(response) {
+            messageDiv.innerHTML = `<p>Response: ${response}</p>`;
+            // Here you can send the response to the person who created the link
+        }
+    </script>
+</body>
+</html>
